@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>all-users</title>
@@ -9,29 +9,37 @@
     <h2 th:case="null">No users found!</h2>
     <div th:case="*">
         <h2>All Users</h2>
-        <!--        <br>-->
-        <table>
+        <br>
+        <table border="1">
             <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Address</th>
+                <th colspan="2">Operations</th>
             </tr>
             </thead>
             <tbody>
+
             <tr th:each="user:${allUsers}">
+
                 <td th:text="${user.id}"></td>
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.surName}"></td>
-                <td th:text="${user.id}"></td>
-                <td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td>
-                <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td>
+                <td th:text="${user.address}"></td>
+
+                <td><a th:href="@{/updateUser(id=${user.id})}">
+                    <input type="button" value="Update"/></a></td>
+                <td><a th:href="@{/deleteUser(id=${user.id})}">
+                    <input type="button" value="Delete"/></a></td>
             </tr>
             </tbody>
         </table>
-        <div>
-            <p><a href="/user-create">Create user</a></p>
-        </div>
+        <br>
+    </div>
+    <input type="button" value="Create user"
+           onclick="window.location.href = 'saveUser'"/>
+</div>
 </body>
 </html>

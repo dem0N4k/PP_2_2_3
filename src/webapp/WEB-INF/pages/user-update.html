@@ -8,9 +8,8 @@
 
 <form action="#" th:action="@{/updateUser}" th:object="${user}" method="post">
 
-    <label for="id">ID</label>
-    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
-    <br/>
+    <label for="id" hidden>ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID" hidden>
 
     <label for="name">Enter name: </label>
     <input type="text" th:field="*{name}" id="name" placeholder="name"/>
@@ -20,7 +19,7 @@
     <br>
     <label for="address">Enter address: </label>
     <input type="text" th:field="*{address}" id="address" placeholder="address"/>
-    <br>
+    <br><br>
     <input type="submit" value="Update!">
 </form>
 

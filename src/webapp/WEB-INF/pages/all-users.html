@@ -9,7 +9,6 @@
     <h2 th:case="null">No users found!</h2>
     <div th:case="*">
         <h2>All Users</h2>
-        <br>
         <table border="1">
             <thead>
             <tr>
@@ -28,7 +27,6 @@
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.surName}"></td>
                 <td th:text="${user.address}"></td>
-
                 <td><a th:href="@{/updateUser(id=${user.id})}">
                     <input type="button" value="Update"/></a></td>
                 <td><a th:href="@{/deleteUser(id=${user.id})}">
@@ -40,6 +38,7 @@
     </div>
     <input type="button" value="Create user"
            onclick="window.location.href = 'saveUser'"/>
+
 </div>
 </body>
 </html>

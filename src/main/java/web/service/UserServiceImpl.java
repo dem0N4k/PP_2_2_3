@@ -15,7 +15,6 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Override
-    @SuppressWarnings("unchecked")
     public List<User> getAllUsers() {
         return userDAO.getAllUsers();
     }

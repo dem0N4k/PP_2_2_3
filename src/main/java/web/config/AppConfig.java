@@ -34,8 +34,6 @@ public class AppConfig {
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
         em.setPackagesToScan("web.model");
-//        em.setManagedClasses(User.class);
-//        em.setManagedClassNames(Collections.singletonList("model.User"));
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

@@ -14,17 +14,15 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 import java.util.Properties;
 
 
 @Configuration
-@PropertySource("classpath:db.properties")
 @EnableTransactionManagement
+@PropertySource("classpath:db.properties")
 @ComponentScan(value = "web")
-@EnableWebMvc
 public class AppConfig {
 
     @Autowired
@@ -67,8 +65,9 @@ public class AppConfig {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
-    Properties additionalProperties() {
+   public Properties additionalProperties() {
         Properties properties = new Properties();
+        properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
         return properties;

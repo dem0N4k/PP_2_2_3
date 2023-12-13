@@ -9,12 +9,13 @@ import web.model.User;
 import java.util.List;
 
 @Service
+@Transactional (readOnly = true)
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDAO userDAO;
 
     @Override
-    @Transactional
+    @SuppressWarnings("unchecked")
     public List<User> getAllUsers() {
         return userDAO.getAllUsers();
     }
@@ -32,7 +33,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public User getUser(Long id) {
         return userDAO.getUser(id);
     }
